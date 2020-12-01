@@ -1,23 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rock Paper Scissor</title>
+  <title>Rock Paper Scissors</title>
   <meta charset="UTF-8"/>
 </head>
 <body>
   <script>
-    /// create a function called computerPlay that returns a random choice of 'rock' 'paper' or 'scissors'
+    // create a function called computerPlay that returns a random choice of 'rock' 'paper' or 'scissors'
     function computerPlay() {
-        let selection = Math.floor(Math.random() * 3); // returns a random integer between 0 & 2
-        if (selection === 0 ) {
-            return "rock"
-        } else if (selection === 1 ) {
-            return "paper"
-        } else {
-            return "stone"
-        }
+    let selection = Math.floor(Math.random() * 3); // returns a random integer between 0 & 2
+    if (selection === 0) {
+      return "rock";
+    } else if (selection === 1) {
+      return "paper";
+    } else {
+      return "scissors";
     }
-  
+  }
+
+  /// create variables for human weapon selection and computer weapon selection
+  const computerSelection = computerPlay();
+  const humanSelection = "paper";
+  const victoryMsg = "You win! " + humanSelection + " beats " + computerSelection + ".";
+  const defeatMsg = "You lose" + ", " + computerSelection + " beats " + humanSelection + ".";
+
+
+  // create a function that serves as the game itself - this plays one round and takes input from a human player
+  function playRound(humanSelection, computerSelection) {
+    // define winning conditions for player
+    if ((humanSelection === "rock" && computerSelection === "scissors") || (humanSelection === "paper" && computerSelection === "rock") || (humanSelection === "scissors"  && computerSelection === "paper")) {
+      return victoryMsg;
+    } else if (humanSelection === computerSelection) { // define draw conditions for player
+      return "It's a draw!"
+    } else { // if none of the above match, player has lost. Print loss message.
+      return defeatMsg;
+    }
+}
+
   </script>
 </body>
 </html>
