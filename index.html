@@ -6,7 +6,17 @@
 </head>
 <body>
   <script>
-    // Your JavaScript goes here!
+    /// create a function called computerPlay that returns a random choice of 'rock' 'paper' or 'scissors'
+    function computerPlay() {
+        let selection = Math.floor(Math.random() * 3); // returns a random integer between 0 & 2
+        if (selection === 0 ) {
+            return "rock"
+        } else if (selection === 1 ) {
+            return "paper"
+        } else {
+            return "stone"
+        }
+    }
   
   </script>
 </body>
