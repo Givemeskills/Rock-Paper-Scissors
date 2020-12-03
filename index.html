@@ -6,6 +6,7 @@
 </head>
 <body>
   <script>
+
     // create a function called computerPlay that returns a random choice of 'rock' 'paper' or 'scissors'
     function computerPlay() {
     let selection = Math.floor(Math.random() * 3); // returns a random integer between 0 & 2
@@ -18,25 +19,56 @@
     }
   }
 
-  /// create variables for human weapon selection and computer weapon selection
+
+  /// create variables for: human weapon selection and computer weapon selection, victory/defeat messages, 
   const computerSelection = computerPlay();
-  const humanSelection = "paper";
+  const humanSelection = "paper"
   const victoryMsg = "You win! " + humanSelection + " beats " + computerSelection + ".";
   const defeatMsg = "You lose" + ", " + computerSelection + " beats " + humanSelection + ".";
+  let roundsPlayed = 0
+  let humanScore = 0
+  let computerScore = 0
 
 
   // create a function that serves as the game itself - this plays one round and takes input from a human player
   function playRound(humanSelection, computerSelection) {
     // define winning conditions for player
-    if ((humanSelection === "rock" && computerSelection === "scissors") || (humanSelection === "paper" && computerSelection === "rock") || (humanSelection === "scissors"  && computerSelection === "paper")) {
+    if ((humanSelection === "rock" && computerSelection === "scissors") || (humanSelection === "paper" && computerSelection === "rock") || (humanSelection === "scissors" && computerSelection === "paper")) {
+      humanScore++;
       return victoryMsg;
     } else if (humanSelection === computerSelection) { // define draw conditions for player
       return "It's a draw!"
     } else { // if none of the above match, player has lost. Print loss message.
+      computerScore++
       return defeatMsg;
-    }
-}
+    }}
 
+  // create a function that plays 5 rounds, records the outcome of each game and then decides an overall winner based on the final score
+  function game() {
+    console.log(playRound(humanSelection, computerSelection));
+    while (roundsPlayed <= 4) {
+        console.log(playRound(humanSelection, computerSelection));
+        roundsPlayed++;
+    }
+    if (roundsPlayed === 5 && humanScore > computerScore) {
+        console.log("Congratulations, you win!");
+    } else if (roundsPlayed === 5 && humanScore === computerScore) {
+        console.log("You're evenly matched - it's a draw!");
+    } else {
+        console.log("You lose");
+    }}
+//^^^^^^^^^^ this returns undefied - figure out why!
   </script>
 </body>
 </html>
+
+let login = prompt("Who's there?");
+ if (login === username) {
+   let passwordEntry = prompt("Please enter your password");
+    if (passwordEntry === password) {
+     alert("Welcome");
+  } else if (passwordEntry === null || passwordEntry ==='') {
+      alert("Cancelled");
+  } else {
+      alert("Wrong password")  
+  }
