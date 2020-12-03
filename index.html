@@ -22,22 +22,24 @@
 
   /// create variables for: human weapon selection and computer weapon selection, victory/defeat messages, 
   const computerSelection = computerPlay();
+  let roundsPlayed = 0;
+  let humanScore = 0;
+  let computerScore = 0;
   const humanSelection = "paper"
-  const victoryMsg = "You win! " + humanSelection + " beats " + computerSelection + ".";
-  const defeatMsg = "You lose" + ", " + computerSelection + " beats " + humanSelection + ".";
-  let roundsPlayed = 0
-  let humanScore = 0
-  let computerScore = 0
+  const victoryMsg = "You win round " + roundsPlayed + " - " + humanSelection + " beats " + computerSelection + ".";
+  const defeatMsg = "You lose round " + roundsPlayed + " - " + computerSelection + " beats " + humanSelection + ".";
+
 
 
   // create a function that serves as the game itself - this plays one round and takes input from a human player
   function playRound(humanSelection, computerSelection) {
     // define winning conditions for player
+    roundsPlayed++;
     if ((humanSelection === "rock" && computerSelection === "scissors") || (humanSelection === "paper" && computerSelection === "rock") || (humanSelection === "scissors" && computerSelection === "paper")) {
       humanScore++;
       return victoryMsg;
     } else if (humanSelection === computerSelection) { // define draw conditions for player
-      return "It's a draw!"
+      return "Round " + roundsPlayed + "'s " + "a draw."
     } else { // if none of the above match, player has lost. Print loss message.
       computerScore++
       return defeatMsg;
@@ -48,7 +50,9 @@
     console.log(playRound(humanSelection, computerSelection));
     while (roundsPlayed <= 4) {
         console.log(playRound(humanSelection, computerSelection));
-        roundsPlayed++;
+    }
+    if (roundsPlayed === 1 && humanScore > computerScore) {
+
     }
     if (roundsPlayed === 5 && humanScore > computerScore) {
         console.log("Congratulations, you win!");
@@ -57,18 +61,8 @@
     } else {
         console.log("You lose");
     }}
-//^^^^^^^^^^ this returns undefied - figure out why!
+
+
   </script>
 </body>
 </html>
-
-let login = prompt("Who's there?");
- if (login === username) {
-   let passwordEntry = prompt("Please enter your password");
-    if (passwordEntry === password) {
-     alert("Welcome");
-  } else if (passwordEntry === null || passwordEntry ==='') {
-      alert("Cancelled");
-  } else {
-      alert("Wrong password")  
-  }
