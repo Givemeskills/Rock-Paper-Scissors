@@ -26,8 +26,6 @@
   let humanScore = 0;
   let computerScore = 0;
   const humanSelection = "paper"
-  const victoryMsg = "You win round " + roundsPlayed + " - " + humanSelection + " beats " + computerSelection + ".";
-  const defeatMsg = "You lose round " + roundsPlayed + " - " + computerSelection + " beats " + humanSelection + ".";
 
 
 
@@ -35,6 +33,8 @@
   function playRound(humanSelection, computerSelection) {
     // define winning conditions for player
     roundsPlayed++;
+    const victoryMsg = "You win round " + roundsPlayed + " - " + humanSelection + " beats " + computerSelection + ".";
+    const defeatMsg = "You lose round " + roundsPlayed + " - " + computerSelection + " beats " + humanSelection + ".";
     if ((humanSelection === "rock" && computerSelection === "scissors") || (humanSelection === "paper" && computerSelection === "rock") || (humanSelection === "scissors" && computerSelection === "paper")) {
       humanScore++;
       return victoryMsg;
@@ -61,7 +61,6 @@
     } else {
         console.log("You lose");
     }}
-
 
   </script>
 </body>
