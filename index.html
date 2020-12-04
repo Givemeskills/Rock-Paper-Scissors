@@ -9,7 +9,7 @@
 
     // create a function called computerPlay that returns a random choice of 'rock' 'paper' or 'scissors'
     function computerPlay() {
-    let selection = Math.floor(Math.random() * 3); // returns a random integer between 0 & 2
+    let selection = Math.floor(Math.random() * 3);
     if (selection === 0) {
       return "rock";
     } else if (selection === 1) {
@@ -19,47 +19,49 @@
     }
   }
 
-
   /// create variables for: human weapon selection and computer weapon selection, victory/defeat messages, 
-  const computerSelection = computerPlay();
   let roundsPlayed = 0;
   let humanScore = 0;
   let computerScore = 0;
-  const humanSelection = "paper"
+  const humanSelection = "paper";
 
 
-
-  // create a function that serves as the game itself - this plays one round and takes input from a human player
+  // create a function that serves as the game itself - this plays one round and takes input from a human player and the computerPlay() function
   function playRound(humanSelection, computerSelection) {
-    // define winning conditions for player
-    roundsPlayed++;
+
+  // increase round counter by 1 when a round is played
+  roundsPlayed++;
+
+  // define victory and defeat messages shown at the end of the round
     const victoryMsg = "You win round " + roundsPlayed + " - " + humanSelection + " beats " + computerSelection + ".";
     const defeatMsg = "You lose round " + roundsPlayed + " - " + computerSelection + " beats " + humanSelection + ".";
-    if ((humanSelection === "rock" && computerSelection === "scissors") || (humanSelection === "paper" && computerSelection === "rock") || (humanSelection === "scissors" && computerSelection === "paper")) {
+
+  // define victory conditions for human player and return victory message if true, define draw conditions and return draw message, and define loss conditions and return loss message
+    if (humanSelection === "rock" && computerSelection === "scissors"|| humanSelection === "paper" && computerSelection === "rock" || humanSelection === "scissors" && computerSelection === "paper") {
       humanScore++;
       return victoryMsg;
-    } else if (humanSelection === computerSelection) { // define draw conditions for player
+    } else if (humanSelection === computerSelection) { 
       return "Round " + roundsPlayed + "'s " + "a draw."
-    } else { // if none of the above match, player has lost. Print loss message.
+    } else { 
       computerScore++
       return defeatMsg;
     }}
 
   // create a function that plays 5 rounds, records the outcome of each game and then decides an overall winner based on the final score
   function game() {
-    console.log(playRound(humanSelection, computerSelection));
     while (roundsPlayed <= 4) {
+        let computerSelection = computerPlay();
         console.log(playRound(humanSelection, computerSelection));
     }
-    if (roundsPlayed === 1 && humanScore > computerScore) {
-
-    }
     if (roundsPlayed === 5 && humanScore > computerScore) {
-        console.log("Congratulations, you win!");
+        console.log("Congratulations, you win the game");
+        roundsPlayed = 0;
     } else if (roundsPlayed === 5 && humanScore === computerScore) {
         console.log("You're evenly matched - it's a draw!");
+        roundsPlayed = 0;
     } else {
-        console.log("You lose");
+        console.log("You lost the game");
+        roundsPlayed = 0;
     }}
 
   </script>
