@@ -19,14 +19,13 @@
     }
   }
 
-  /// create variables for: human weapon selection and computer weapon selection, victory/defeat messages, 
+  /// create variables for rounds played and the scores of the players
   let roundsPlayed = 0;
   let humanScore = 0;
   let computerScore = 0;
-  const humanSelection = "paper";
 
 
-  // create a function that serves as the game itself - this plays one round and takes input from a human player and the computerPlay() function
+  // create a function that serves as the game itself - this plays one round and takes input from a human player and the computerPlay() function given provided bythe game function
   function playRound(humanSelection, computerSelection) {
 
   // increase round counter by 1 when a round is played
@@ -47,9 +46,11 @@
       return defeatMsg;
     }}
 
-  // create a function that plays 5 rounds, records the outcome of each game and then decides an overall winner based on the final score
+  // create a function that plays 5 rounds (using a new computerSelection each time), records the outcome of each game and then decides an overall winner based on the final score
   function game() {
-    while (roundsPlayed <= 4) {
+    while (roundsPlayed <= 4) { // when 0-4 rounds have played, ask player for their input, and use computerSelection variablel to generate an answer for the computer
+
+        let humanSelection = prompt("Rock, paper or scissors?").toLowerCase();
         let computerSelection = computerPlay();
         console.log(playRound(humanSelection, computerSelection));
     }
